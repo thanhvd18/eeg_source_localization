@@ -1,0 +1,28 @@
+   % channel 1 : label FP1
+   % channel 2 : label FP2
+   % channel 3 : label F3
+   % channel 4 : label F4
+   % channel 5 : label C3
+   % channel 6 : label C4
+   % channel 7 : label P3
+   % channel 8 : label P4
+   % channel 9 : label O1
+   % channel 10 : label O2
+   % channel 11 : label F7
+   % channel 12 : label F8
+   % channel 13 : label T3
+   % channel 14 : label T4
+   % channel 15 : label T5 
+   % channel 16 : label T6
+   % channel 17 : label A1 : left ear
+   % channel 18 : label A2 : right ear
+   % channel 19 : label Fz
+   % channel 20 : label Cz
+   % channel 21 : label Pz
+   % channel 22 : label LOC
+   % channel 23 : label ROC
+   % channel 24 : label ECG1
+   % channel 25 : label EMG1
+   % channel 26 : label EMG2
+
+%T3/T4 become T7/T8, while T5/T6 become P7/P8
