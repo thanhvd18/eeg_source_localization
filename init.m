@@ -1,1 +1,2 @@
+rng('default')
 addpath(genpath("."))
