@@ -10,10 +10,13 @@ PARAM = struct();
 
 v_unit = 1;
 
-PARAM.A = 8*v_unit;
+%tuning A
+PARAM.A = 4*v_unit;
 % A = 3.25;
 % A = 4.5;
 % A = 8.5;
+
+
 PARAM.B = 22*v_unit;
 PARAM.a = 100;
 PARAM.b=50;
@@ -24,7 +27,7 @@ PARAM.C1=PARAM.C;PARAM.C2 = 0.8*C;PARAM.C3 = 0.25*C;PARAM.C4 = 0.25*C;
 PARAM.v0=6*v_unit;
 PARAM.e0=2.5;
 PARAM.r=0.56*v_unit;
-PARAM.ad=30;
+PARAM.ad=33;
 
 % Wendling model
 PARAM.K01 = 00;
@@ -36,12 +39,12 @@ PARAM.K20 = 00;
 
 
 PARAM.signal_FS = 10000;
-PARAM.signal_freq = 500;
+PARAM.signal_freq = 300;
 PARAM.pulse_rate = randi([30,320],1,1);
 % pulse_rate = 90;
 
 %Tuning mu, sigma
-PARAM.mu = 0;
+PARAM.mu = 10;
 PARAM.sigma =  1;
 % PARAM.mu = 10;
 % PARAM.sigma =  2;

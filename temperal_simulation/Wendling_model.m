@@ -2,7 +2,7 @@ function dYdt = Wendling_model(x,y)
 % References: Wendling, Fabrice, Jean-Jacques Bellanger, Fabrice Bartolomei, and Patrick Chauvel
 % . "Relevance of nonlinear lumped-parameter models in the analysis of depth-EEG epileptic signals." Biological cybernetics 83, no. 4 (2000): 367-378.
 
-PARAM = get_default_NMM();
+PARAM = get_default_parameters_NMM();
 % load('params.mat')
 a       = PARAM.a;
 
