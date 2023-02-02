@@ -27,4 +27,4 @@ topoplot((s_spatial),eloc, 'electrodes','labels')
 subplot(1,2,2)
 headplot(s_spatial,'channelLocation/Standard-10-20-Cap19.spl')
 suptitle('Headplot and topoplot')
-
+set(gcf,'color','w');

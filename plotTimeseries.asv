@@ -1,8 +1,6 @@
 clc,clear,close all;
 
 init;
-
-selected_spike = 1;
 %% 1.real data sample
 dataDir = './realdata_sample/';
 labelDir = './realdata_sample/';
@@ -12,26 +10,38 @@ load([dataDir sample])                  %load graph variable
 load([labelDir label_sample])           %load Spk_event variable
 
 
-electrodes              = {"Fp1","Fp2","F3","F4","C3","C4","P3","P4","O1","O2","F7","F8","T7","T8","P7","P8","Fz","Cz","Pz"};
-eloc                    = readlocs('channelLocation/Standard-10-20-Cap19.locs');
 
-selected_spike = 1;
-% plotChannel(graph,Spk_event,selected_spike)
-% function plotChannel(graph,Spk_event,selected_spike)
-if istable(Spk_event),Spk_event = table2array(Spk_event), end;
-spike_time = Spk_event(selected_spike,2);
-delta_t = 64; %64 sample ~ 0.25s
+%% 
+opt.spike_id             = 1;
+opt.representation_method = "GWT"; % ["GWT","STF","STWV"]
+opt.inverse_problem_method = "sLORETA"; %["sLORETA","MNE", "MUSIC"]
 
+
+spike_id                = opt.spike_id;
+representation_method   = opt.representation_method;
+inverse_problem_method  = opt.inverse_problem_method;
+% channel indices and name
 
 graph = average_montage(graph);
 filter_graph = graph;
 filter_graph = 1e6*filter_graph;
 
+function X_segment  = get_spike_segment(filter_graph,Spk_event,electrodes,selected_spike,is_plot)
+%filter_graph: number electrode x time
+%Spk_event: spike time and channel label
+% electrodes:  electrode indices and name
+%selected_spike: index of spike 1-> #spikes
 
-spike_channel = double(Spk_event(selected_spike,3));
+
+spike_channel = Spk_event(selected_spike,3);
 if spike_channel >19
     spike_channel = spike_channel -2;
 end
+spike_time = Spk_event(selected_spike,2);
+delta_t = 64; %64 sample ~ 0.25s
+%plot spike segment
+
+if is_plot
 if spike_channel ~= 1
     plot(spike_time-delta_t:spike_time+delta_t,filter_graph(spike_channel,spike_time-delta_t:spike_time+delta_t)','b', 'linewidth', 1.5);
 end
@@ -44,5 +54,4 @@ ylabel('\muV')
 xlabel('Sample')
 title(" 10-20 system - 19 channel EEG")
 legend(electrodes)
-% end
-set(gcf,'color','w');
+end
